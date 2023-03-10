@@ -8,7 +8,12 @@
 #include "Broom.h"
 #include "FlyingCarpet.h"
 
-std::string Vehicle::getName()
+Vehicle::Vehicle()
+{
+	name = "";
+}
+
+const char* Vehicle::getName()
 {
 	return name;
 }

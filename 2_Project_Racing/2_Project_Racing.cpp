@@ -64,7 +64,7 @@ int readString(std::string requestStr)
 void sortArr(GameResult *arr, int size)
 {
 	if (size == 1) { return; }
-	GameResult tmp;
+	GameResult tmp{};
 	bool change = 0;
 	do
 	{
@@ -93,7 +93,7 @@ void printArr(GameResult *arr, int size)
 {
 	for (int i = 0; i < size; ++i)
 	{
-		if ((arr[i].vehicle)->getName().length() < 8)
+		if (strlen((arr[i].vehicle)->getName()) < 8)
 		{
 			std::cout << i + 1 << ". " << (arr[i].vehicle)->getName() << ".\t\t\tВремя: " << arr[i].time << '\n';
 		}
@@ -119,11 +119,11 @@ int main(int argc, char** argv)
 	int distanceRace;					//хранение дистанции гонки
 	int reg;							//для ввода в программу типа ТС или окончания регистрации
 	const int qV = 7;					//кол-во существующих типов ТС
-	Vehicle *arrV[qV];					//массив-хранитель указателей на все ТС
+	Vehicle *arrV[qV]{};					//массив-хранитель указателей на все ТС
 	int qRegV = 0;						//переменная хранящая кол-во зарегестрированных на гонку ТС
 	std::string menu = "";				//текст меню для запроса данных у пользователя
 	
-	GameResult gameResult[qV];			//хранение результатов гонки
+	GameResult gameResult[qV]{};			//хранение результатов гонки
 	
 	//общий цикл игры
 	do
@@ -219,7 +219,7 @@ int main(int argc, char** argv)
 			//пользователю не дается возможность регистрировать ранее зарегестрированные ТС и завершить регистрацию пока не будет два ТС
 			//недопустимые действия пользователю не выводятся на экран в принципе
 			int available = 0;					//для хранения актуального кол-ва еще не зарегестрированных, но доступных к регистрации ТС с учетом типа гонки и ранее зарегестрированных ТС
-			TypeReg arrAvailable[qV];			//для храния доступных к регистрации типов ТС
+			TypeReg arrAvailable[qV]{};			//для храния доступных к регистрации типов ТС
 			for (int i = 0; i < qV; ++i)
 			{
 				//пропуск зарегестрированных ТС и ТС не соответствующих типу гонки
